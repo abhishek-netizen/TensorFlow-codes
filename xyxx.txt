@@ -1,0 +1,22 @@
+import joblib
+    model = joblib.load('credit_default_pred.ml')
+    default_predictions = model.predict([[
+                            int(request.args['LIMIT_BAL']),
+                            int(request.args['EDUCATION']),
+                            int(request.args['MARRIAGE']),
+                            int(request.args['AGE']),
+                            int(request.args['PAY_1']),
+                            int(request.args['PAY_AMT1']),
+                            int(request.args['PAY_AMT2']),
+                            int(request.args['PAY_AMT3']),
+                            int(request.args['PAY_AMT4']),
+                            int(request.args['PAY_AMT5']),
+                            int(request.args['PAY_AMT6']),
+                            int(request.args['BILL_AMT1']),
+                            int(request.args['BILL_AMT2']),
+                            int(request.args['BILL_AMT3']),
+                            int(request.args['BILL_AMT4']),
+                            int(request.args['BILL_AMT5']),
+                            int(request.args['BILL_AMT6'])
+                           ]])
+    return str(round(default_predictions[0],2))
